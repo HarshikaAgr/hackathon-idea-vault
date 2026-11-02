@@ -1,4 +1,4 @@
-# WEB103 Project 1 - *hackathon-idea-vault*
+# Hackathon-idea-vault
 
 Submitted by: **Harshika Agrawal**
 
