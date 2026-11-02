@@ -4,8 +4,9 @@
   "description": "A listicle web app for discovering hackathon project ideas, built with Express.js and vanilla JavaScript.",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js",
+    "seed": "node server/config/seed.js"
   },
   "repository": {
     "type": "git",
