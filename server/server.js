@@ -1,62 +1,67 @@
 const express = require("express");
-const path = require("path");
-const ideas = require("./data/ideas");
 
-const app = express();
+const router = express.Router();
 
-const PORT = 3000;
-
-// Serve static files such as HTML, CSS, and JavaScript
-app.use(express.static(path.join(__dirname, "public")));
+const pool = require("../config/database");
 
 
-// HOME PAGE ROUTE
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+// GET ALL PROJECT IDEAS
+router.get("/", async (req, res) => {
 
+  try {
 
-// GET ALL IDEAS
-app.get("/api/ideas", (req, res) => {
-  res.json(ideas);
-});
-
-
-// GET ONE IDEA
-app.get("/api/ideas/:slug", (req, res) => {
-  const idea = ideas.find((item) => item.slug === req.params.slug);
-
-  if (!idea) {
-    return res.status(404).json({ message: "Idea not found" });
-  }
-
-  res.json(idea);
-});
-
-
-// INDIVIDUAL IDEA PAGE
-app.get("/ideas/:slug", (req, res) => {
-  const idea = ideas.find((item) => item.slug === req.params.slug);
-
-  if (!idea) {
-    return res.status(404).sendFile(
-      path.join(__dirname, "public", "404.html")
+    const result = await pool.query(
+      "SELECT * FROM ideas ORDER BY id"
     );
+
+    res.json(result.rows);
+
+  } catch (error) {
+
+    console.error("Error fetching ideas:", error);
+
+    res.status(500).json({
+      message: "Error retrieving project ideas"
+    });
+
   }
 
-  res.sendFile(path.join(__dirname, "public", "detail.html"));
 });
 
 
-// 404 PAGE
-app.use((req, res) => {
-  res.status(404).sendFile(
-    path.join(__dirname, "public", "404.html")
-  );
+// GET ONE PROJECT IDEA
+router.get("/:slug", async (req, res) => {
+
+  try {
+
+    const slug = req.params.slug;
+
+    const result = await pool.query(
+      "SELECT * FROM ideas WHERE slug = $1",
+      [slug]
+    );
+
+    if (result.rows.length === 0) {
+
+      return res.status(404).json({
+        message: "Project idea not found"
+      });
+
+    }
+
+    res.json(result.rows[0]);
+
+  } catch (error) {
+
+    console.error("Error fetching idea:", error);
+
+    res.status(500).json({
+      message: "Error retrieving project details"
+    });
+
+  }
+
 });
 
 
-// START SERVER
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+module.exports = router;
