@@ -55,7 +55,7 @@ Describe any challenges encountered while building the app or any additional con
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2026] [HarshikaAgr]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
