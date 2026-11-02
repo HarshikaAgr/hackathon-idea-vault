@@ -1,0 +1,222 @@
+/* General Website Styling */
+
+body {
+  background-color: #f8f7ff;
+  color: #25233a;
+  min-height: 100vh;
+}
+
+
+/* Navigation */
+
+nav {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+nav strong {
+  color: #6c4ed9;
+  font-size: 1.2rem;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+/* Hero Section */
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #ede7ff, #fce7f3);
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+
+.hero h1 {
+  color: #4c329a;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  max-width: 650px;
+  margin: auto;
+}
+
+
+/* Project Grid */
+
+.ideas-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  );
+
+  gap: 25px;
+
+  margin-top: 30px;
+}
+
+
+/* Individual Cards */
+
+.idea-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 25px;
+
+  border: 1px solid #e8e3f7;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+
+/* Card Hover Animation */
+
+.idea-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 10px 25px rgba(76, 50, 154, 0.15);
+}
+
+
+/* Card Icon */
+
+.idea-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+
+/* Card Title */
+
+.idea-card h3 {
+  color: #4c329a;
+  margin-bottom: 15px;
+}
+
+
+/* Card Description */
+
+.idea-card p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+
+/* Buttons */
+
+a[role="button"] {
+  background-color: #6c4ed9;
+  border-color: #6c4ed9;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+a[role="button"]:hover {
+  background-color: #5438b8;
+  border-color: #5438b8;
+}
+
+
+/* Detail Page */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: #6c4ed9;
+  font-weight: bold;
+}
+
+#idea-details {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #e8e3f7;
+}
+
+.detail-icon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+#idea-details h1 {
+  color: #4c329a;
+}
+
+#idea-details h2 {
+  margin-top: 30px;
+  color: #6c4ed9;
+}
+
+.project-info {
+  background-color: #f8f7ff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.project-info p {
+  margin-bottom: 10px;
+}
+
+
+/* 404 Page */
+
+.error-page {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.error-page h1 {
+  font-size: 6rem;
+  color: #6c4ed9;
+}
+
+.error-page h2 {
+  color: #4c329a;
+}
+
+.error-page p {
+  margin-bottom: 30px;
+}
+
+
+/* Footer */
+
+footer {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  color: #777;
+}
+
+
+/* Mobile Styling */
+
+@media (max-width: 600px) {
+
+  .hero {
+    padding: 40px 15px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  #idea-details {
+    padding: 20px;
+  }
+
+}

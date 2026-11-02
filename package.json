@@ -1,0 +1,24 @@
+{
+  "name": "hackathon-idea-vault",
+  "version": "1.0.0",
+  "description": "A listicle web app for discovering hackathon project ideas, built with Express.js and vanilla JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarshikaAgr/hackathon-idea-vault.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarshikaAgr/hackathon-idea-vault/issues"
+  },
+  "homepage": "https://github.com/HarshikaAgr/hackathon-idea-vault#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
