@@ -84,7 +84,7 @@ function displayIdeaDetails(idea) {
   addInfo("Slug", idea.slug);
   addInfo("Category", idea.category);
   addInfo("Difficulty", idea.difficulty);
-  addInfo("Tech Stack", idea.techStack);
+  addInfo("Tech Stack", idea.tech_stack);
   addInfo("Estimated Duration", idea.duration);
 
 
