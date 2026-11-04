@@ -2,18 +2,13 @@ require("dotenv").config();
 
 const pool = require("./database");
 
-// Import original Unit 1 project data
 const ideas = require("../../data/ideas");
 
-
 async function seedDatabase() {
-
   try {
-
     console.log("Connecting to PostgreSQL...");
 
-
-    // STEP 1: Create the table
+    // Create the table
     await pool.query(`
       CREATE TABLE IF NOT EXISTS ideas (
         id INTEGER PRIMARY KEY,
@@ -29,12 +24,10 @@ async function seedDatabase() {
       );
     `);
 
-    console.log("Ideas table created successfully!");
+    console.log("Ideas table is ready!");
 
-
-    // STEP 2: Insert all six ideas
+    // Insert the six ideas
     for (const idea of ideas) {
-
       await pool.query(
         `
         INSERT INTO ideas (
@@ -49,12 +42,10 @@ async function seedDatabase() {
           duration,
           icon
         )
-
         VALUES (
           $1, $2, $3, $4, $5,
           $6, $7, $8, $9, $10
         )
-
         ON CONFLICT (id)
         DO UPDATE SET
           slug = EXCLUDED.slug,
@@ -77,39 +68,25 @@ async function seedDatabase() {
           idea.techStack,
           JSON.stringify(idea.features),
           idea.duration,
-          idea.icon
-        ]
+          idea.icon,
+        ],
       );
-
     }
 
-    console.log("All project ideas inserted successfully!");
+    console.log("Project ideas seeded successfully!");
 
-
-    // STEP 3: Verify the data
+    // Verify records
     const result = await pool.query(
-      "SELECT id, name, category FROM ideas ORDER BY id"
+      "SELECT id, name, category FROM ideas ORDER BY id",
     );
 
-    console.log("Projects in database:");
-
     console.table(result.rows);
-
-
   } catch (error) {
-
     console.error("Database seeding failed:", error);
-
     process.exitCode = 1;
-
   } finally {
-
     await pool.end();
-
   }
-
 }
 
-
-// Run the seeding function
 seedDatabase();
