@@ -1,67 +1,57 @@
 const express = require("express");
+const path = require("path");
+const pool = require("./config/database");
+const ideasRoutes = require("./routes/ideas");
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const router = express.Router();
+// Serve frontend files
+app.use(
+  express.static(path.join(__dirname, "../client"))
+);
 
-const pool = require("../config/database");
+// API routes
+app.use("/api/ideas", ideasRoutes);
 
-
-// GET ALL PROJECT IDEAS
-router.get("/", async (req, res) => {
-
-  try {
-
-    const result = await pool.query(
-      "SELECT * FROM ideas ORDER BY id"
-    );
-
-    res.json(result.rows);
-
-  } catch (error) {
-
-    console.error("Error fetching ideas:", error);
-
-    res.status(500).json({
-      message: "Error retrieving project ideas"
-    });
-
-  }
-
+// HOME PAGE
+app.get("/", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "../client/index.html")
+  );
 });
 
-
-// GET ONE PROJECT IDEA
-router.get("/:slug", async (req, res) => {
-
+// INDIVIDUAL IDEA PAGE
+app.get("/ideas/:slug", async (req, res) => {
   try {
-
-    const slug = req.params.slug;
-
     const result = await pool.query(
-      "SELECT * FROM ideas WHERE slug = $1",
-      [slug]
+      "SELECT id FROM ideas WHERE slug = $1",
+      [req.params.slug]
     );
 
     if (result.rows.length === 0) {
-
-      return res.status(404).json({
-        message: "Project idea not found"
-      });
-
+      return res.status(404).sendFile(
+        path.join(__dirname, "../client/404.html")
+      );
     }
 
-    res.json(result.rows[0]);
+    res.sendFile(
+      path.join(__dirname, "../client/detail.html")
+    );
 
   } catch (error) {
-
-    console.error("Error fetching idea:", error);
-
-    res.status(500).json({
-      message: "Error retrieving project details"
-    });
-
+    console.error("Error loading project:", error);
+    res.status(500).send("Unable to load project");
   }
-
 });
 
+// CUSTOM 404 PAGE
+app.use((req, res) => {
+  res.status(404).sendFile(
+    path.join(__dirname, "../client/404.html")
+  );
+});
 
-module.exports = router;
+// START SERVER
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
