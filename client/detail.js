@@ -87,7 +87,6 @@ function displayIdeaDetails(idea) {
   addInfo("Tech Stack", idea.tech_stack);
   addInfo("Estimated Duration", idea.duration);
 
-
   // Features heading
   const featuresHeading = document.createElement("h2");
 
