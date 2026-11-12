@@ -6,7 +6,6 @@ body {
   min-height: 100vh;
 }
 
-
 /* Navigation */
 
 nav {
@@ -23,7 +22,6 @@ nav a {
   text-decoration: none;
   font-weight: 500;
 }
-
 
 /* Hero Section */
 
@@ -47,22 +45,17 @@ nav a {
   margin: auto;
 }
 
-
 /* Project Grid */
 
 .ideas-grid {
   display: grid;
 
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(280px, 1fr)
-  );
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   gap: 25px;
 
   margin-top: 30px;
 }
-
 
 /* Individual Cards */
 
@@ -75,10 +68,10 @@ nav a {
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
-  transition: transform 0.2s ease,
-              box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
-
 
 /* Card Hover Animation */
 
@@ -88,14 +81,12 @@ nav a {
   box-shadow: 0 10px 25px rgba(76, 50, 154, 0.15);
 }
 
-
 /* Card Icon */
 
 .idea-icon {
   font-size: 3rem;
   margin-bottom: 15px;
 }
-
 
 /* Card Title */
 
@@ -104,14 +95,12 @@ nav a {
   margin-bottom: 15px;
 }
 
-
 /* Card Description */
 
 .idea-card p {
   font-size: 0.95rem;
   margin-bottom: 12px;
 }
-
 
 /* Buttons */
 
@@ -127,7 +116,6 @@ a[role="button"]:hover {
   background-color: #5438b8;
   border-color: #5438b8;
 }
-
 
 /* Detail Page */
 
@@ -170,7 +158,6 @@ a[role="button"]:hover {
   margin-bottom: 10px;
 }
 
-
 /* 404 Page */
 
 .error-page {
@@ -192,7 +179,6 @@ a[role="button"]:hover {
   margin-bottom: 30px;
 }
 
-
 /* Footer */
 
 footer {
@@ -202,11 +188,9 @@ footer {
   color: #777;
 }
 
-
 /* Mobile Styling */
 
 @media (max-width: 600px) {
-
   .hero {
     padding: 40px 15px;
   }
@@ -218,5 +202,30 @@ footer {
   #idea-details {
     padding: 20px;
   }
+}
 
+/* Search Bar */
+
+#search-input {
+  max-width: 600px;
+
+  margin: 25px auto 35px;
+
+  display: block;
+
+  border: 2px solid #e8e3f7;
+
+  border-radius: 12px;
+
+  padding: 15px;
+
+  background-color: white;
+
+  font-size: 1rem;
+}
+
+#search-input:focus {
+  border-color: #6c4ed9;
+
+  box-shadow: 0 0 0 3px rgba(108, 78, 217, 0.15);
 }

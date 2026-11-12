@@ -1,7 +1,10 @@
 const ideasContainer = document.getElementById("ideas-container");
 
+const searchInput = document.getElementById("search-input");
 
-// Get all ideas from the Express backend
+let allIdeas = [];
+
+// Fetch ideas from PostgreSQL through Express
 async function getIdeas() {
   try {
     const response = await fetch("/api/ideas");
@@ -12,8 +15,9 @@ async function getIdeas() {
 
     const ideas = await response.json();
 
-    displayIdeas(ideas);
+    allIdeas = ideas;
 
+    displayIdeas(allIdeas);
   } catch (error) {
     console.error("Error:", error);
 
@@ -21,55 +25,60 @@ async function getIdeas() {
   }
 }
 
-
-// Display ideas on the homepage
+// Display project cards
 function displayIdeas(ideas) {
+  // Clear existing cards
+  ideasContainer.innerHTML = "";
 
+  // Show message if no results
+  if (ideas.length === 0) {
+    const message = document.createElement("p");
+
+    message.textContent = "No matching projects found.";
+
+    ideasContainer.appendChild(message);
+
+    return;
+  }
+
+  // Create each project card
   ideas.forEach((idea) => {
-
-    // Create a card
     const card = document.createElement("article");
 
     card.classList.add("idea-card");
 
-
-    // Create icon
+    // Icon
     const icon = document.createElement("div");
 
     icon.classList.add("idea-icon");
 
     icon.textContent = idea.icon;
 
-
-    // Create title
+    // Title
     const title = document.createElement("h3");
 
     title.textContent = idea.name;
 
-
-    // Create category
+    // Category
     const category = document.createElement("p");
 
     category.innerHTML = "<strong>Category:</strong> ";
 
     category.append(document.createTextNode(idea.category));
 
-
-    // Create difficulty
+    // Difficulty
     const difficulty = document.createElement("p");
 
     difficulty.innerHTML = "<strong>Difficulty:</strong> ";
 
     difficulty.append(document.createTextNode(idea.difficulty));
 
-
-    // Create description
+    // Description
     const description = document.createElement("p");
 
     description.textContent = idea.description;
 
-
-    // Create link
+    // Detail page link
     const link = document.createElement("a");
 
     link.href = `/ideas/${idea.slug}`;
@@ -78,8 +87,7 @@ function displayIdeas(ideas) {
 
     link.setAttribute("role", "button");
 
-
-    // Add everything to the card
+    // Add elements to card
     card.appendChild(icon);
     card.appendChild(title);
     card.appendChild(category);
@@ -87,13 +95,30 @@ function displayIdeas(ideas) {
     card.appendChild(description);
     card.appendChild(link);
 
-
-    // Add card to homepage
+    // Add card to page
     ideasContainer.appendChild(card);
-
   });
 }
 
+// Search function
+function searchIdeas() {
+  const searchTerm = searchInput.value.toLowerCase().trim();
 
-// Run when the page loads
+  const filteredIdeas = allIdeas.filter((idea) => {
+    const nameMatch = idea.name.toLowerCase().includes(searchTerm);
+
+    const categoryMatch = idea.category.toLowerCase().includes(searchTerm);
+
+    const difficultyMatch = idea.difficulty.toLowerCase().includes(searchTerm);
+
+    return nameMatch || categoryMatch || difficultyMatch;
+  });
+
+  displayIdeas(filteredIdeas);
+}
+
+// Listen for search input
+searchInput.addEventListener("input", searchIdeas);
+
+// Load project ideas
 getIdeas();

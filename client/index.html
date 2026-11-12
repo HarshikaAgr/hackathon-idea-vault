@@ -1,72 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Idea Vault</title>
 
-  <title>Hackathon Idea Vault</title>
+    <!-- Pico CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
 
-  <!-- Pico CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-  >
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/style.css">
-</head>
+  <body>
+    <!-- Navigation -->
+    <nav class="container">
+      <ul>
+        <li><strong>🚀 Hackathon Idea Vault</strong></li>
+      </ul>
 
-<body>
+      <ul>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
 
-  <!-- Navigation -->
-  <nav class="container">
-    <ul>
-      <li><strong>🚀 Hackathon Idea Vault</strong></li>
-    </ul>
+    <!-- Main Content -->
+    <main class="container">
+      <header class="hero">
+        <h1>Discover Your Next Hackathon Idea 🚀</h1>
 
-    <ul>
-      <li><a href="/">Home</a></li>
-    </ul>
-  </nav>
+        <p>
+          Explore creative project ideas, discover new technologies, and find
+          inspiration for your next hackathon!
+        </p>
+      </header>
 
+      <section>
+        <h2>Explore Project Ideas</h2>
 
-  <!-- Main Content -->
-  <main class="container">
+        <p>Browse our collection of exciting hackathon projects.</p>
 
-    <header class="hero">
-      <h1>Discover Your Next Hackathon Idea 🚀</h1>
+        <!-- Search Bar -->
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search by name, category, or difficulty..."
+          aria-label="Search project ideas"
+        />
 
-      <p>
-        Explore creative project ideas, discover new technologies,
-        and find inspiration for your next hackathon!
-      </p>
-    </header>
+        <!-- Project Cards -->
+        <div id="ideas-container" class="ideas-grid"></div>
+      </section>
+    </main>
 
+    <!-- Footer -->
+    <footer class="container">
+      <p>Made with 💜 for student developers</p>
+    </footer>
 
-    <section>
-      <h2>Explore Project Ideas</h2>
-
-      <p>
-        Browse our collection of exciting hackathon projects.
-      </p>
-
-      <!-- JavaScript will add the project cards here -->
-      <div id="ideas-container" class="ideas-grid"></div>
-
-    </section>
-
-  </main>
-
-
-  <!-- Footer -->
-  <footer class="container">
-    <p>Made with 💜 for student developers</p>
-  </footer>
-
-
-  <!-- JavaScript -->
-  <script src="/script.js"></script>
-
-</body>
+    <!-- JavaScript -->
+    <script src="/script.js"></script>
+  </body>
 </html>
