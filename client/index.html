@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hackathon Idea Vault</title>
+
+    <!-- Pico CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="container site-nav">
+      <a href="/" class="site-logo">
+        Hackathon Idea Vault<span class="logo-dot">.</span>
+      </a>
+
+      <a href="/" class="nav-link"> Home </a>
+    </nav>
+
+    <main class="container">
+      <!-- Introduction -->
+      <header class="hero">
+        <p class="eyebrow">A COLLECTION OF PROJECT IDEAS</p>
+
+        <h1>Discover Your Next Hackathon Idea</h1>
+        <p>Find something worth building.</p>
+      
+        <p class="hero-description">
+          Explore creative project ideas, discover new technologies, and find
+          inspiration for your next hackathon! Pick an idea, explore the
+          details, and start building.
+        </p>
+      </header>
+
+      <!-- Project Section -->
+      <section class="projects-section">
+        <div class="section-heading">
+          <div>
+            <h2>Explore ideas</h2>
+
+            <p>A starting point for your next hackathon.</p>
+          </div>
+
+          <span id="idea-count" class="idea-count"></span>
+        </div>
+
+        <!-- Search: only ONE input -->
+        <div class="search-container">
+          <label for="search-input" class="search-label">
+            Search projects
+          </label>
+
+          <div class="search-field">
+            <!-- Magnifying glass on LEFT -->
+            <svg
+              class="search-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-4-4"></path>
+            </svg>
+
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Try 'AI', 'Finance', or 'Beginner'"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <!-- JavaScript adds cards here -->
+        <div id="ideas-container" class="ideas-grid">
+          <p class="status-message">Loading project ideas...</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container site-footer">
+      <p>Hackathon Idea Vault</p>
+
+      <p>Built for curious developers.</p>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
