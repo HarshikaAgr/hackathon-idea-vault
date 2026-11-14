@@ -1,54 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Hackathon Idea Vault</title>
 
-  <title>Project Details | Hackathon Idea Vault</title>
+    <!-- Pico CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
 
-  <!-- Pico CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-  >
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/style.css">
-</head>
+  <body>
+    <!-- Navigation -->
+    <nav class="container site-nav">
+      <a href="/" class="site-logo">
+        Hackathon Idea Vault<span class="logo-dot">.</span>
+      </a>
 
-<body>
+      <a href="/" class="nav-link"> Home </a>
+    </nav>
 
-  <!-- Navigation -->
-  <nav class="container">
-    <ul>
-      <li><strong>🚀 Hackathon Idea Vault</strong></li>
-    </ul>
+    <main class="container">
+      <a href="/" class="back-link"> ← Back to All Ideas </a>
 
-    <ul>
-      <li><a href="/">Home</a></li>
-    </ul>
-  </nav>
+      <!-- Project details will appear here -->
+      <article id="idea-details"></article>
+    </main>
 
+    <footer class="container site-footer">
+      <p>Hackathon Idea Vault</p>
 
-  <main class="container">
+      <p>Built for curious developers.</p>
+    </footer>
 
-    <a href="/" class="back-link">
-      ← Back to All Ideas
-    </a>
-
-    <!-- Project details will appear here -->
-    <article id="idea-details"></article>
-
-  </main>
-
-
-  <footer class="container">
-    <p>Made with 💜 for student developers</p>
-  </footer>
-
-
-  <script src="/detail.js"></script>
-
-</body>
+    <script src="/detail.js"></script>
+  </body>
 </html>
